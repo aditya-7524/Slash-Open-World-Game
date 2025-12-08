@@ -1,0 +1,30 @@
+# Unreal Engine
+Intermediate/
+Saved/
+DerivedDataCache/
+Binaries/
+Build/Win64/
+Build/Android/
+Build/IOS/
+
+# Visual Studio
+.vs/
+*.VC.db
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.userprefs
+
+# IDEs
+.vscode/
+*.code-workspace
+
+# Unreal Files to Ignore
+*.pdb
+*.obj
+*_BuiltData.uasset
+
+# Misc
+Thumbs.db
+.DS_Store
