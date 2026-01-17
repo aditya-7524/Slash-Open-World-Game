@@ -20,7 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 private:
-	UPROPERTY(VisibleDefaultsOnly) //can only be seen in the defaults panel, not editable
+	UPROPERTY(VisibleAnywhere) //can only be seen in defaults and instance panels, not editable
 	float RunningTime;
 	UPROPERTY(EditAnywhere)  //can only be edited in BP and World instance
 	float Amplitude = 0.25;	//how high the item moves up and down, can be assigned in constructor also [1]
