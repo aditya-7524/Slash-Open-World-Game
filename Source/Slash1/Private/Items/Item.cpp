@@ -18,6 +18,11 @@ void AItem::BeginPlay()
 
 }
 
+float AItem::TransformedSin(float val)
+{
+	return Amplitude * FMath::Sin(val * TimeConstant);
+}
+
 // Called every frame
 void AItem::Tick(float DeltaTime)
 {
@@ -25,9 +30,9 @@ void AItem::Tick(float DeltaTime)
 
 	RunningTime += DeltaTime;  //keep track of total running time
 
-	float DeltaZ = Amplitude * FMath::Sin(RunningTime * TimeConstant);		//oscillate up and down over time, 0.5f = height multiplier
+	//float DeltaZ = Amplitude * FMath::Sin(RunningTime * TimeConstant);		//oscillate up and down over time, 0.5f = height multiplier
 	
-	AddActorWorldOffset(FVector(0.f, 0.f, DeltaZ));		//move the item up and down over time, based on the deltaZ calculated above, 0.f for X and Y means no movement in those axes
+	//AddActorWorldOffset(FVector(0.f, 0.f, DeltaZ));		//move the item up and down over time, based on the deltaZ calculated above, 0.f for X and Y means no movement in those axes
 
 	DRAW_SPHERE_1FRAME(GetActorLocation());				//after each frame, it takes the current location, and offsets based on that
 	DRAW_VECTOR_1FRAME(GetActorLocation(), GetActorLocation() + GetActorForwardVector() * 100); //draw forward vector for 1 frame

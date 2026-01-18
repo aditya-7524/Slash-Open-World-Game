@@ -19,12 +19,15 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-private:
-	UPROPERTY(VisibleAnywhere) //can only be seen in defaults and instance panels, not editable
-	float RunningTime;
-	UPROPERTY(EditAnywhere)  //can only be edited in BP and World instance
-	float Amplitude = 0.25;	//how high the item moves up and down, can be assigned in constructor also [1]
 
-	UPROPERTY(EditAnywhere)  //can only be edited per instance in the editor, not during gameplay
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sine Parameters")  /*can be edited per instance in the editor and read in blueprints,
+							is now exposed to event graph, and category groups parameters for good organization*/
+	float Amplitude = 0.25;	//how high the item moves up and down, can be assigned in constructor also [1]
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sine Parameters") 
+	float RunningTime;
+
+private:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))  //meta tag allows private variable to be edited in editor
 	float TimeConstant = 5.f; //how fast the item moves up and down or period=2*PI/TimeConstant
 };
