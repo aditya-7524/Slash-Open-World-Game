@@ -27,6 +27,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sine Parameters") 
 	float RunningTime;
 
+	UFUNCTION(BlueprintCallable)		//can be called in blueprints
+	float TransformedSin(float val);
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))  //meta tag allows private variable to be edited in editor
 	float TimeConstant = 5.f; //how fast the item moves up and down or period=2*PI/TimeConstant
