@@ -27,8 +27,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sine Parameters") 
 	float RunningTime;
 
-	UFUNCTION(BlueprintCallable)		//can be called in blueprints
-	float TransformedSin(float val);
+	UFUNCTION(BlueprintPure)		//can be used in blueprints, does not modify the state of the object
+	float TransformedSin();
+
+	UFUNCTION(BlueprintPure)
+	float TransformedCos();
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))  //meta tag allows private variable to be edited in editor
