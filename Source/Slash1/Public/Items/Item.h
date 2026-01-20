@@ -33,7 +33,19 @@ protected:
 	UFUNCTION(BlueprintPure)
 	float TransformedCos();
 
+	template<typename T>
+	T Avg(T first, T second);
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))  //meta tag allows private variable to be edited in editor
 	float TimeConstant = 5.f; //how fast the item moves up and down or period=2*PI/TimeConstant
+
+	UPROPERTY(VisibleAnywhere)		//expose to reflection system, garbage collection
+	UStaticMeshComponent* ItemMesh;	//pointer to the mesh component
 };
+
+template<typename T>
+inline T AItem::Avg(T first, T second)		//inline to avoid multiple definition errors
+{
+	return T(first + second) / 2;			//can take any type that supports + and /
+}
